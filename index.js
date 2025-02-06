@@ -9,8 +9,8 @@ dotenv.config();
 const { TOKEN, CHAT_ID, THREAD_ID } = process.env;
 const bot = new Telegraf(TOKEN);
 
-// Планирование отправки расписания в 19:00 каждый день, кроме воскресенья
-schedule.scheduleJob({ hour: 17, minute: 0, dayOfWeek: [1, 2, 3, 4, 5, 7] }, async () => {
+// Планирование отправки расписания в 18:25 каждый день, кроме воскресенья
+schedule.scheduleJob({ hour: 15, minute: 25, dayOfWeek: [1, 2, 3, 4, 5, 7] }, async () => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
   

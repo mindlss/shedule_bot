@@ -91,7 +91,9 @@ async function renderSchedule(date, pairs, location, noPairs) {
 export async function generateDay(date, pairs, location, noPairs, filename) {
     const html = await renderSchedule(date, pairs, location, noPairs);
 
-    const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     await page.setContent(html);
     const height = await page.$eval('.container', (el) => el.offsetHeight);
