@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Расписание</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /*STYLE*/
+        </style>
+        <link rel="stylesheet" href="week.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="schedule">
+                <div class="date">Пн 03.02</div>
+                <div class="lesson">
+                    <div class="title">ИТиП</div>
+                    <div class="type">Лекция</div>
+                    <div class="time">9:30-11:00</div>
+                    <div class="room">Аудитория: A-123</div>
+                    <div class="green"></div>
+                </div>
+                <div class="lesson">
+                    <div class="title">${pair.name}</div>
+                    <div class="type">${lessonType}</div>
+                    <div class="time">${pair.time}</div>
+                    <div class="room">Аудитория: ${pair.room}</div>
+                    <div class="${barColor}"></div>
+                </div>
+            </div>
+            <div class="schedule">
+                <div class="date">{date}</div>
+                <div class="lesson">
+                    <div class="title">${pair.name}</div>
+                    <div class="type">${lessonType}</div>
+                    <div class="time">${pair.time}</div>
+                    <div class="room">Аудитория: ${pair.room}</div>
+                    <div class="${barColor}"></div>
+                </div>
+            </div>
+            <div class="schedule">
+                <div class="date">{date}</div>
+                /*SCHEDULE*/</div>
+            <div class="schedule">
+                <div class="date">Пн 03.02</div>
+                /*SCHEDULE*/</div>
+            <div class="schedule">
+                <div class="date">Пн 03.02</div>
+                /*SCHEDULE*/</div>
+            <div class="schedule">
+                <div class="date">Пн 03.02</div>
+                /*SCHEDULE*/</div>
+        </div>
+    </body>
+</html>
