@@ -136,3 +136,35 @@ export async function getScheduleForDate(targetDate) {
         return { error: 'Ответ не содержит расписания.' };
     }
 }
+
+export async function getScheduleForWeek(startDate) {
+    const monthDate = getFirstDayOfMonth(startDate);
+    const response = await sendPostRequest(monthDate);
+  
+    if (response && response.data && response.data["Ответ"] && response.data["Ответ"]["МассивРасписания"]) {
+      const schedule = response.data["Ответ"]["МассивРасписания"];
+      const weekSchedule = {};
+  
+      for (let i = 0; i < 6; i++) {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + i);
+        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        const result = findObjectByDate(schedule, formattedDate);
+  
+        if (result) {
+          const lessons = returnLessons(result);
+          weekSchedule[formattedDate] = {
+            noPairs: lessons.lessons.length === 0,
+            dateInfo: capitalizeFirstLetter(result["ДеньНедели"]) + ', ' + result["ДатаПредставление"],
+            ...lessons
+          };
+        } else {
+          weekSchedule[formattedDate] = { noPairs: true };
+        }
+      }
+  
+      return weekSchedule;
+    } else {
+      return { error: 'Ответ не содержит расписания.' };
+    }
+  }

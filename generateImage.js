@@ -8,11 +8,11 @@ const __dirname = path.dirname(__filename);
 
 async function renderSchedule(date, pairs, location, noPairs) {
     const htmlTemplate = fs.readFileSync(
-        path.join(__dirname, 'schedule.html'),
+        path.join(__dirname, 'day.html'),
         'utf-8'
     );
 
-    const style = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf-8');
+    const style = fs.readFileSync(path.join(__dirname, 'day.css'), 'utf-8');
 
     const noPairHTML = `<div class="lesson">
         <div class="nopair">Сегодня пар нет!</div>
@@ -88,7 +88,7 @@ async function renderSchedule(date, pairs, location, noPairs) {
     return htmlContent;
 }
 
-export async function generateImage(date, pairs, location, noPairs, filename) {
+export async function generateDay(date, pairs, location, noPairs, filename) {
     const html = await renderSchedule(date, pairs, location, noPairs);
 
 const browser = await puppeteer.launch({
